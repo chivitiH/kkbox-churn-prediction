@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+
+# Virtual env
+venv/
+.env
+
+# Data (trop lourd)
+data/raw/
+data/processed/
+
+# Artifacts (optionnel mais recommandé)
+artifacts/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
