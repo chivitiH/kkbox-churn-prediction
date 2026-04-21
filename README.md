@@ -6,44 +6,64 @@ End-to-end machine learning pipeline to predict customer churn using real-world 
 
 ## 🎯 Objective
 
-Predict whether a user will churn (stop subscription) and enable retention strategies.
+Predict whether a user will churn (stop subscription) and enable targeted retention strategies.
 
 ---
 
 ## 📊 Dataset
 
-KKBox churn dataset:
-- Transactions
+KKBox churn dataset (Kaggle):
+
+- Transactions (payments & subscriptions)
 - User logs (listening behavior)
-- Members information
+- Members (demographics)
+
+⚠️ Dataset not included due to size and licensing.  
+Download: https://www.kaggle.com/competitions/kkbox-churn-prediction-challenge
 
 ---
 
 ## ⚙️ Pipeline
 
-1. Data loading & preprocessing
-2. Feature engineering (recency, frequency, account age)
-3. Model training (LightGBM)
-4. Evaluation (AUC, F1, Recall)
-5. Inference pipeline
-6. Feature alignment (train vs inference)
+Raw Data → Feature Engineering → Model Training → Evaluation → Inference
+
+### Key steps:
+- Data preprocessing (multi-table joins)
+- Feature engineering:
+  - Recency (activity & transactions)
+  - Frequency (usage patterns)
+  - Account age
+- Model: LightGBM
+- Evaluation: AUC, F1-score, Recall
+- Inference pipeline with feature alignment
 
 ---
 
 ## 📈 Results
 
-- AUC: ~0.80
-- Recall (churn): ~0.53
-- F1-score: ~0.33
+| Metric | Value |
+|------|------|
+| AUC | ~0.80 |
+| Recall (churn) | ~0.53 |
+| F1-score | ~0.33 |
+
+👉 AUC is prioritized due to strong class imbalance.
+
+---
+
+## 📊 Feature Importance
+
+![Feature Importance](reports/figures/feature_importance.png)
 
 ---
 
 ## 📦 Outputs
 
-- artifacts/model.pkl
-- artifacts/predictions.csv
-- artifacts/feature_importance.csv
-- artifacts/metrics.json
+artifacts/
+├── model.pkl
+├── predictions.csv
+├── feature_importance.csv
+└── metrics.json
 
 ---
 
@@ -69,5 +89,22 @@ PYTHONPATH=. python src/pipeline/inference_pipeline.py
 
 ## 💡 Business Use
 
-Target high-risk users with retention campaigns (emails, discounts, offers).
+Identify high-risk users and trigger retention actions:
+- Discounts
+- Emails
+- Personalized offers
 
+---
+
+## 🔧 Tech Stack
+
+- Python
+- Pandas / Polars
+- LightGBM
+- Scikit-learn
+
+---
+
+## 📌 Author
+
+Built as an end-to-end ML engineering project.
